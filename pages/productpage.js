@@ -1,3 +1,5 @@
+const { expect } = require('@playwright/test');
+
 class productpage {
     constructor(page) {
         this.page = page;
@@ -11,6 +13,9 @@ class productpage {
 
     async gotocart() {
         await this.carticon.click();
+    }
+    async verifyCartCount() {
+        await expect(this.page.locator('.shopping_cart_badge')).toHaveText('1');
     }
 }
 

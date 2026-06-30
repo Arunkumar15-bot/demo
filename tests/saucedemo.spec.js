@@ -12,8 +12,11 @@ test('SauceDemo Test', async ({ page }) => {
     await loginpage.navigate();
 
     await loginpage.login('standard_user', 'secret_sauce');
+    await loginpage.verifyLoginSuccess();
 
     await productpage.addproduct();
+    await productpage.verifyCartCount();
+
     await productpage.gotocart();
 
     await checkoutpage.checkout('Arun', 'Kumar', '627758');
